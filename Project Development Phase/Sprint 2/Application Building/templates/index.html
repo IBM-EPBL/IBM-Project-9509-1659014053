@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FERTILIZER RECOMMENDATION SYSTEM</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google font - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,900;1,100;1,200;1,300;1,400;1,500;1,800;1,900&display=swap"
+            rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}" />
+
+</head>
+
+<body>
+
+    <!-- landing page -->
+    <section class="main">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg px-4 my-nav">
+                <!-- left side of the navbar -->
+                <div class="container-fluid">
+                    <a class="navbar-brand fs-2 nav-link" href="/">
+                        <img src="{{url_for('static', filename='images/fertilizer-bag-in-grass.gif')}}" class="fertilizer-icon" alt="fertilizers">
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- right side of the navbar -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" aria-current="page" href="#fertilizers" target="_blank">Fertilizers</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="#footer">Collab!</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="{{ url_for('login')}}" role="button">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <h2 class="main__title">FERTILIZER RECOMMENDATION</h2>
+
+        <h3 class="main__subtitle">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur alias, delectus ut fugia
+        </h3>
+
+        <p class="main__paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, culpa perspiciatis. Repellendus suscipit
+            facilis iste. Dicta neque hic accusantium consectetur, porro dolorum, exercitationem doloribus veniam
+            asperiores fugit earum quas corporis?
+        </p>
+
+        <h4 class="main__subtitle main__subtitle--spacing">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </h4>
+
+        <div class="btn">
+            <a class="btn btn-success fs-4 px-4 py-2 capture" href="#predict" role="button">
+                <i class="fa-solid fa-tractor camera"></i> Predict
+            </a>
+        </div>
+        <!--  end of main content -->
+
+    </section>
+    <!-- end of landing page -->
+
+    <!-- fertilizer recommendation page -->
+    <div id="predict">
+        <h3 class="pagetwo-title">DISEASE PREDICTION AND FERTILIZER RECOMMENDATION</h3>
+        <div class="d-flex flex-sm-row flex-column">
+            <div class="p-2 farm-img"><img src= "{{url_for('static', filename='images/personwithferti.png')}}" alt=""></div>
+            <div class="p-2 predict-form">
+                <form action="{{ url_for('predict') }}" method="POST" enctype=multipart/form-data>
+                    <div class="input-container">
+                        <label for="leaf-family">Select the family of the leaf belongs to</label>
+
+                        <select name="leaf-family" class="decorated" required>
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="fruits">Fruits</option>
+
+                            <option value="vegetables">Vegetables</option>
+                        </select>
+                    </div>
+
+                    <div class="upload">
+                        <input name="leaf" type="file" onchange="loadFile(event)">
+                        <p id="drag"> Drag your files here or click to upload</p>
+                    </div>
+
+                    <button class="btn btn-success fs-4 px-3 py-2" type="submit" value="Predict" onclick="return true">
+                        <i class="fa-solid fa-tractor camera"></i> Predict
+                    </button>
+                </form>
+            </div>
+
+        </div>
+        <footer class="footer" id="footer">
+            <ul class="footer__icons">
+                <li>
+                    <a href="#!" class="footer__icon"><i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li>
+                    <a href="#!" class="footer__icon"><i class="fab fa-twitter"></i></a>
+                </li>
+
+                <li>
+                    <a href="#!" class="footer__icon"><i class="fab fa-google-plus"></i></a>
+                </li>
+            </ul>
+            <div class="footer__copyrights">
+                &copy; copyright, All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <!-- end of fertilizer recommendation page -->
+
+    <!-- script tags -->
+    <script>
+        var loadFile = function (event) {
+            var drag = document.getElementById('drag');
+            var url = URL.createObjectURL(event.target.files[0]);
+            drag.innerHTML = "<img class=\"output\" src=\"" + url + "\" alt=\"img\" >";
+        }
+    </script>
+
+    <script src="index.js"></script>
+    <!---------------------------- bootstrap script ------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- end of script tags -->
+</body>
+
+</html>
