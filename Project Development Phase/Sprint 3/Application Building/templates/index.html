@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FERTILIZER RECOMMENDATION SYSTEM</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google font - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,900;1,100;1,200;1,300;1,400;1,500;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}" />
+
+</head>
+
+<body id="body">
+
+    <!-- landing page -->
+    <section class="main">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg px-4 my-nav">
+                <!-- left side of the navbar -->
+                <div class="container-fluid">
+                    <a class="navbar-brand fs-2 nav-link" href="/">
+                        <img src="{{url_for('static', filename = 'images/fertilizer-bag-in-grass.gif')}}" class="fertilizer-icon" alt="fertilizers">
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- right side of the navbar -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" aria-current="page" href="#fertilizers">Fertilizers</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="#footer">About</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="#footer">Collab!</a>
+                        </li>
+
+                        <li class="nav-item px-4 mt-2">
+                            <a class="nav-link" href="{{ url_for('login')}}" role="button">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <h2 class="main__title">FERTILIZER RECOMMENDATION</h2>
+
+        <h3 class="main__subtitle">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur alias, delectus ut fugia
+        </h3>
+
+        <p class="main__paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, culpa perspiciatis. Repellendus suscipit
+            facilis iste. Dicta neque hic accusantium consectetur, porro dolorum, exercitationem doloribus veniam
+            asperiores fugit earum quas corporis?
+        </p>
+
+        <h4 class="main__subtitle main__subtitle--spacing">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </h4>
+
+        <div class="btn">
+            <a class="btn btn-success fs-4 px-4 py-2 capture" href="#predict" role="button">
+                <i class="fa-solid fa-tractor camera"></i>
+                Get the fertilizer
+            </a>
+        </div>
+        <!--  end of main content -->
+
+    </section>
+    <!-- end of landing page -->
+    <div id="predict" class="predict">
+        <h2 class="pagetwo-title">DISEASE PREDICTION AND FERTILIZER RECOMMENDATION</h2>
+        <div class="d-flex flex-sm-row flex-column">
+            <div class="p-2 farm-img"><img src="{{url_for('static', filename = 'images/personwithferti.png')}}" alt=""></div>
+            <div class="p-2 predict-form">
+                <form action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
+                    <div class="input-container">
+                        <label for="leaf-family">Select the family of the leaf belongs to</label>
+
+                        <select name="leaf-family" class="decorated" required>
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="fruits">Fruits</option>
+
+                            <option value="vegetables">Vegetables</option>
+                        </select>
+                    </div>
+
+                    <div class="upload">
+                        <input name="leaf" type="file" onchange="loadFile(event)">
+                        <p id="drag"> Drag your files here or click to upload</p>
+                    </div>
+
+                    <button class="btn btn-success fs-4 px-3 py-2" type="submit" value="Predict" onclick="return true">
+                        <i class="fa-solid fa-tractor camera"></i> Predict
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <main id="fertilizers" data-aos="fade" data-aos-delay="1500">
+
+        <div class="page-header d-flex align-items-center">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="">
+                        <h2>Infected leaves and fertilizer suggestions</h2>
+                        <p>The below shown are images of commonly found leaf diseases.</p>
+                        <p>On hovering over the image you can find the appropriate ferlizer recommendation for the
+                            stated disease.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Page Header -->
+
+        <!-- ======= Gallery Section ======= -->
+        <section id="gallery" class="gallery">
+            <div class="container-fluid">
+
+                <div class="row gy-4 justify-content-center">
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/apple_scab1.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center" id="g-links">
+                                <a href="static/images/apple_scab1.jpg" title="Gallery 1" class="glightbox preview-link"><i
+                                        class="bi bi-arrows-angle-expand"></i></a>
+                                <p>Apply - Bonide Captan, wettable sulfur, summer lime sulfur or Spectracide Immunox –
+                                    when temperatures
+                                    are above 60 degrees and the leaves or blooms are wet.</p>
+                            </div>
+                            <h5>Apple Scab </h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/apple_black_rot.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/apple_black_rot.jpg" title="Gallery 2" class="glightbox preview-link"><i
+                                        class="bi bi-arrows-angle-expand"></i></a>
+                                <p>Apply - POTASSIUM CHLORIDE/MURIATE OF POTASH (MOP) (Crystalline powder)</p>
+                            </div>
+                            <h5>Apple Black Rot </h5>
+
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/black_measels.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/black_measels.jpg" title="Gallery 3" class="glightbox preview-link"><i
+                                        class="bi bi-arrows-angle-expand"></i></a>
+                                <p>DIAMMONIUM PHOSPHATE (DAP)</p>
+                            </div>
+                            <h5>Grape Esca Black Measeles</h5>
+
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/corn_maize.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/corn_maize.jpg" title="Gallery 4" class="glightbox preview-link"><i
+                                        class="bi bi-arrows-angle-expand"></i></a>
+                                <p>AMMONIUM MOLYBDATE</p>
+                            </div>
+                            <h5>Cercospora Leaf Spot</h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/cherry.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/cherry.jpg" title="Gallery 5" class="glightbox preview-link"><i
+                                        class="bi bi-arrows-angle-expand"></i></a>
+                                <p>MANGANESE SULPHATE</p>
+                            </div>
+                            <h5>Powdery Mildew</h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/potato_early_blight.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/potato_early_blight.jpg" title="Gallery 6"
+                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <p>SINGLE SUPERPHOSPHATE (SSP) (Powdered)</p>
+                            </div>
+                            <h5>Potato Early Blight</h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/pepper_bell_bacterial_spot.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/pepper_bell_bacterial_spot.jpg" title="Gallery 7"
+                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <p>POTASSIUM CHLORIDE/MURIATE OF POTASH (MOP)</p>
+                            </div>
+                            <h5>Pepper Bell Bacterial Spot</h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="{{url_for('static', filename = 'images/strawberry_leaf_scorch.jpg')}}" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="static/images/strawberry_leaf_scorch.jpg" title="Gallery 8"
+                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <p>DIAMMONIUM PHOSPHATE (DAP)</p>
+                            </div>
+                            <h5>Stawberry Leaf Scorch</h5>
+                        </div>
+                    </div><!-- End Gallery Item -->
+
+
+                </div>
+
+            </div>
+        </section><!-- End Gallery Section -->
+
+    </main><!-- End #main -->
+
+    <footer class="footer" id="footer">
+        <ul class="footer__icons">
+            <li>
+                <a href="#" class="footer__icon"><i class="fab fa-facebook"></i></a>
+            </li>
+
+            <li>
+                <a href="#" class="footer__icon"><i class="fab fa-twitter"></i></a>
+            </li>
+
+            <li>
+                <a href="#" class="footer__icon"><i class="fab fa-google-plus"></i></a>
+            </li>
+        </ul>
+        <div class="footer__copyrights">
+            &copy; copyright, All rights reserved.
+        </div>
+    </footer>
+    <button class="toggle" id="toggle" title="change the theme"><i class="fa-solid fa-bullseye"></i></button>
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader">
+        <div class="line"></div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="{{url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'vendor/glightbox/js/glightbox.min.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{url_for('static', filename = 'scripts/main.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- end of script tags -->
+</body>
+
+</html>
