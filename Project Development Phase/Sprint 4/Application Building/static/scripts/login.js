@@ -16,6 +16,7 @@ function clearInputError(inputElement) {
   inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#createAccount");

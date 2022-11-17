@@ -124,6 +124,7 @@ body {
     outline: none;
     cursor: pointer;
     background: var(--color-primary);
+    text-decoration: none;
 }
 
 .form__button:hover {

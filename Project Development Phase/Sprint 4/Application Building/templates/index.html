@@ -46,8 +46,9 @@
                 <div class="container-fluid">
                     <a class="navbar-brand fs-2 nav-link" href="/">
                         <img src="{{url_for('static', filename = 'images/fertilizer-bag-in-grass.gif')}}" class="fertilizer-icon" alt="fertilizers">
+                        Hi, <span id="disp"></span>
                     </a>
-
+                    
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -94,11 +95,6 @@
             for supplying fertilizer to the crop to achieve yield and quality goals (economic) in a manner that minimizes 
             nutrient losses to the environment.
         </p>
-
-        <h4 class="main__subtitle main__subtitle--spacing">
-            Nitrogen(N),Phosphorus(P) & Potassium (K) are important fertilizers 
-            extensively utilized in crops to supply a sufficient level of nutrients.
-        </h4>
 
         <div class="btn">
             <a class="btn btn-success fs-4 px-4 py-2 capture" href="#predict" role="button">
@@ -290,6 +286,19 @@
     <div id="preloader">
         <div class="line"></div>
     </div>
+
+    <script>
+        window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    document.getElementById('disp').innerHTML = data.name;
+}
+    </script>
 
     <!-- Vendor JS Files -->
     <script src="{{url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
