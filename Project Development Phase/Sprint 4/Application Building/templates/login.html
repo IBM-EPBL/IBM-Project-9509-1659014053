@@ -76,7 +76,7 @@
                 <input type="password" class="form__input" autofocus placeholder="Confirm password">
                 <div class="form__input-error-message"></div>
             </div>
-            <button class="form__button" type="submit">Sign Up</button>
+            <button class="form__button" type="submit" onClick="testJS()">Sign Up</button>
             <p class="form__text">
                 <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
             </p>
@@ -85,11 +85,7 @@
     </div>
     <script>
         function onSuccess(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            $("#name").text(profile.getName());
-            $("#image").attr('src',profile.getImageUrl());
-            $(".data").css("display","block");
-            $(".g-signin2").css("display","none");
+            console.log(googleUser);
         }
         function onFailure(error) {
             console.log(error);
@@ -107,7 +103,7 @@
         }
         function testJS() {
             var b = document.getElementById('name').value,
-            url = 'http://127.0.0.1:5000?name=' + encodeURIComponent(b);
+            url = 'http://127.0.0.1:5000?name=' +'Hi,' + encodeURIComponent(b);
             console.log(b);
             document.location.href = url;
         }
