@@ -1,0 +1,118 @@
+body{
+    background: white;
+    margin: 0;
+    overflow: hidden;  
+    font-family: 'Poppins', sans-serif;
+}
+
+div{
+    position:absolute;
+}
+
+.title{
+    padding: 2rem 0;
+    font-weight: bold;
+    font-size: 3rem;
+    color: white;
+    z-index: 9999;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.container{
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+} 
+
+img{
+  width: 256px;
+  height: 256px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.heading{
+  font-weight: bold;
+}
+
+.logoutbtn{
+    position:absolute;
+    right: 40px;
+    margin-top: 2rem;
+    z-index: 99999;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+
+.logoutbtn:hover{
+    color: rgb(227, 223, 223);
+}
+
+.backbtn{
+  position:absolute;
+    left: 40px;
+    margin-top: 2rem;
+    z-index: 99999;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.backbtn:hover{
+  color: rgb(227, 223, 223);
+}
+
+.content{
+    color: white; 
+    font-size: 22px; 
+    text-align: center !important;
+} 
+
+/************************** footer styling **************************************/
+#behind {
+    background: #222;  
+    width: 100%;
+    z-index:0;
+    bottom: 0;
+  }
+  
+  #dusk{
+    background: #222;  
+    width: 100%;
+    height:100%;
+    z-index:1;
+    opacity: 0.6;
+  }
+  
+  #front{
+    background: #000; 
+    z-index:3;
+    margin-left: 50%;
+    color: "white";
+  }
+  
+  #grass{
+    width: 100%;
+  }
+  
+  canvas{
+    position: absolute; 
+  }
+  
+  #test{
+    position: relative;
+    display: block;
+    margin:0;
+    z-index: -5;
+  }
+/******************************* end of footer styling ******************************8/
+  
