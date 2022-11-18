@@ -46,7 +46,7 @@
                 <div class="container-fluid">
                     <a class="navbar-brand fs-2 nav-link" href="/">
                         <img src="{{url_for('static', filename = 'images/fertilizer-bag-in-grass.gif')}}" class="fertilizer-icon" alt="fertilizers">
-                        Hi, <span id="disp"></span>
+                        <span id="disp">Hi</span>
                     </a>
                     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -128,12 +128,11 @@
                         <p id="drag"> Drag your files here or click to upload</p>
                     </div>
 
-                    <button class="btn btn-success fs-4 px-3 py-2" type="submit" value="Predict" onclick="return true">
+                    <button class="btn btn-success fs-4 px-3 py-2" type="submit" value="Predict">
                         <i class="fa-solid fa-tractor camera"></i> Predict
                     </button>
                 </form>
             </div>
-
         </div>
     </div>
 
@@ -288,16 +287,28 @@
     </div>
 
     <script>
+        let frm = document.querySelector("form");
+        frm.addEventListener("submit", confirm);
+        function confirm(evt){
+            evt.preventDefault();
+            var logindata= document.getElementById('disp').innerHTML;
+            if(logindata!='Hi') {
+             alert('Proceeding to get the result');
+             frm.submit();
+            } else {
+                alert('Please login');
+            }
+        }
         window.onload = function () {
-    var url = document.location.href,
-        params = url.split('?')[1].split('&'),
-        data = {}, tmp;
-    for (var i = 0, l = params.length; i < l; i++) {
-         tmp = params[i].split('=');
-         data[tmp[0]] = tmp[1];
-    }
-    document.getElementById('disp').innerHTML = data.name;
-}
+            var url = document.location.href,
+            params = url.split('?')[1].split('&'),
+            data = {}, tmp;
+            for (var i = 0, l = params.length; i < l; i++) {
+                tmp = params[i].split('=');
+                data[tmp[0]] = tmp[1];
+            }
+            document.getElementById('disp').innerHTML = data.name;
+        }
     </script>
 
     <!-- Vendor JS Files -->
